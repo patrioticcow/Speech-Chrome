@@ -3,6 +3,8 @@
   "description": "Simple Text to Speech",
   "icons": {
     "128": "images/icon-128.png",
+    "38": "images/icon-38.png",
+    "19": "images/icon-19.png",
     "16": "images/icon-16.png"
   },
   "background": {
