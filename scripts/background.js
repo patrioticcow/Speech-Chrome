@@ -22,6 +22,14 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
         }, function () {
             //some code to execute when done
             console.log('done');
+
+            chrome.contextMenus.removeAll(function () {
+                chrome.contextMenus.create({
+                    "id"      : "speech",
+                    "title"   : "Speak selection",
+                    "contexts": ["selection"]
+                });
+            });
         });
 
         chrome.contextMenus.removeAll(function () {
