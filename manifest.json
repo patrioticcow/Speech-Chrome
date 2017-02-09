@@ -1,6 +1,7 @@
 {
   "default_locale": "en",
-  "description": "Simple Text to Speech",
+  "name": "Simple Text to Speech",
+  "description": "Select the text you want to hear, right click and select 'Speak selection'",
   "icons": {
     "128": "images/icon-128.png",
     "38": "images/icon-38.png",
@@ -13,10 +14,7 @@
       "scripts/background.js"
     ]
   },
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhCiROdrchnIvDEMqPoJ8PwnoPUzlG5LYJ5SOtdH2p6QCDmv7hJNPvbXgDPAyP5XwekwcwQAyC33Wry+mK71k1fp+I6V2ITlRvcV2oovzVKAbBnBRG5oVs4zr+0XILL2vjliXhvgX+ij6xfR3KK95ERP2tW82btL9orctLfTLD6Q+M9Nt+XpKzjOwbsU3GGr2e/GXFTD9To/4E3rSNNhBe9YH3abt2WvgivSjDXBNNKxsGckgB1M/cMnBq+nrGmesMTLbTG7E98oKjV6z7QNx9DsytQodMWnAWa09NoaJSGpg4K7L7dl5tq2hlMlv2R+iGxxoENbzOHTb+PyW9nRneQIDAQAB",
   "manifest_version": 2,
-  "name": "Select the text you want to hear, right click and select 'Speak selection'",
   "permissions": [
     "contextMenus",
     "https://*/*",
