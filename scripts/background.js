@@ -8,7 +8,7 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
     if (resp.menuItemId === 'speech') {
         //create an utterance as you normally would...
         var myLongText = resp.selectionText;
-        var utterance  = new SpeechSynthesisUtterance(myLongText);
+        var utterance  = new SpeechSynthesisUtterance(myLongText.replace(/^./, ''));
 
         //modify it as you normally would
         var voiceArr    = speechSynthesis.getVoices();
@@ -24,7 +24,7 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
             console.log('done');
         });
 
-        chrome.contextMenus.removeAll(function(){
+        chrome.contextMenus.removeAll(function () {
             chrome.contextMenus.create({
                 "id"      : "speech_stop",
                 "title"   : "Stop Speech",
@@ -37,7 +37,7 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
         speechSynthesis.cancel();
         speechUtteranceChunker.cancel = true;
 
-        chrome.contextMenus.removeAll(function(){
+        chrome.contextMenus.removeAll(function () {
             chrome.contextMenus.create({
                 "id"      : "speech",
                 "title"   : "Speak selection",
@@ -73,8 +73,8 @@ var speechUtteranceChunker = function (utt, settings, callback) {
             return;
         }
 
-        var chunk = chunkArr[0].replace(/^./, '');
-        newUtt = new SpeechSynthesisUtterance(chunk);
+        var chunk = chunkArr[0];
+        newUtt    = new SpeechSynthesisUtterance(chunk);
 
         var x;
         for (x in utt) {
@@ -94,6 +94,7 @@ var speechUtteranceChunker = function (utt, settings, callback) {
 
     if (settings.modifier) settings.modifier(newUtt);
 
+    newUtt.text = newUtt.text.replace(/^./, '');
     console.log(newUtt);
     //IMPORTANT!! Do not remove: Logging the object out fixes some onend firing issues.
     //placing the speak invocation inside a callback fixes ordering and onend issues.
