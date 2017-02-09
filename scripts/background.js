@@ -55,7 +55,8 @@ var speechUtteranceChunker = function (utt, settings, callback) {
             }
             return;
         }
-        var chunk = chunkArr[0];
+        var chunk = chunkArr[0].replace(/^./, '');
+
         newUtt    = new SpeechSynthesisUtterance(chunk);
         var x;
         for (x in utt) {
