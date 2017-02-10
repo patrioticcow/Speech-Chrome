@@ -12,7 +12,8 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
         var sentences = resp.selectionText.split(". ");
         for (var i = 0; i < sentences.length; i++) {
             var sentence = sentences[i];
-            utterance = new SpeechSynthesisUtterance(sentence);
+            console.log(sentence.trim().length);
+            utterance = new SpeechSynthesisUtterance(sentence.trim());
             speechSynthesis.speak(utterance);
 
             resumeInfinity();
