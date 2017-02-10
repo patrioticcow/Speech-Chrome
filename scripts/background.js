@@ -5,7 +5,7 @@ var timeoutResumeInfinity;
 chrome.contextMenus.onClicked.addListener(function (resp) {
     if (resp.menuItemId === 'speech') {
         speakStopMenu();
-        responsiveVoice.speak(resp.selectionText, 'US English Female');
+        responsiveVoice.speak(resp.selectionText);
     }
 
     if (resp.menuItemId === 'speech_stop') {
