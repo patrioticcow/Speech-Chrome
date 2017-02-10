@@ -4,43 +4,15 @@ var timeoutResumeInfinity;
 
 chrome.contextMenus.onClicked.addListener(function (resp) {
     if (resp.menuItemId === 'speech') {
-        // add the stop menu
         speakStopMenu();
-
-        var utterance;
-
-        var sentences = resp.selectionText.split(". ");
-        for (var i = 0; i < sentences.length; i++) {
-            var sentence = sentences[i];
-            console.log(sentence.trim().length);
-            utterance = new SpeechSynthesisUtterance(sentence.trim());
-            speechSynthesis.speak(utterance);
-
-            resumeInfinity();
-        }
-
-        utterance.onstart = function (event) {
-            resumeInfinity();
-        };
-
-        utterance.onend = function (event) {
-            //speakMenu();
-            clearTimeout(timeoutResumeInfinity);
-        };
-
+        responsiveVoice.speak(resp.selectionText, 'US English Female');
     }
 
-    // if stop menu is clicked
     if (resp.menuItemId === 'speech_stop') {
-        speechSynthesis.cancel();
+        responsiveVoice.cancel();
         speakMenu();
     }
 });
-
-function resumeInfinity() {
-    speechSynthesis.resume();
-    timeoutResumeInfinity = setTimeout(resumeInfinity, 1000);
-}
 
 function speakMenu() {
     chrome.contextMenus.removeAll(function () {
@@ -61,3 +33,4 @@ function speakStopMenu() {
         });
     });
 }
+
