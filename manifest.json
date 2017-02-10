@@ -20,7 +20,7 @@
     "https://*/*",
     "http://*/*"
   ],
-  "version": "0.9.0",
+  "version": "0.9.1",
   "web_accessible_resources": [
     "scripts/jquery-1.11.2.min.js"
   ]

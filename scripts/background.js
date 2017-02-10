@@ -8,7 +8,7 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
     if (resp.menuItemId === 'speech') {
         //create an utterance as you normally would...
         var myLongText = resp.selectionText;
-        var utterance  = new SpeechSynthesisUtterance(myLongText.replace(/^./, ''));
+        var utterance  = new SpeechSynthesisUtterance(myLongText);
 
         //modify it as you normally would
         var voiceArr    = speechSynthesis.getVoices();
@@ -63,7 +63,7 @@ var speechUtteranceChunker = function (utt, settings, callback) {
 
     if (utt.voice && utt.voice.voiceURI === 'native') { // Not part of the spec
         newUtt      = utt;
-        newUtt.text = txt.replace(/^./, '');
+        newUtt.text = txt;
         newUtt.addEventListener('end', function () {
             if (speechUtteranceChunker.cancel) speechUtteranceChunker.cancel = false;
             if (callback !== undefined) callback();
@@ -102,7 +102,7 @@ var speechUtteranceChunker = function (utt, settings, callback) {
 
     if (settings.modifier) settings.modifier(newUtt);
 
-    newUtt.text = newUtt.text.replace(/^./, '');
+    newUtt.text = newUtt.text.replace(/^\./, '');
     console.log(newUtt);
     //IMPORTANT!! Do not remove: Logging the object out fixes some onend firing issues.
     //placing the speak invocation inside a callback fixes ordering and onend issues.
