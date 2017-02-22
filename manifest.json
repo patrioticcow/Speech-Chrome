@@ -24,7 +24,7 @@
   },
   "background": {
     "scripts": ["scripts/background.js", "scripts/responsivevoice.js"],
-    "persistent": false
+    "persistent": true
   },
   "manifest_version": 2,
   "permissions": [
@@ -34,7 +34,7 @@
     "https://*/*",
     "http://*/*"
   ],
-  "version": "0.9.7",
+  "version": "0.9.8",
   "web_accessible_resources": [
     "scripts/jquery-1.11.2.min.js"
   ]
