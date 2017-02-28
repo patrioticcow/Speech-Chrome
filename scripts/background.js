@@ -4,8 +4,16 @@ chrome.contextMenus.onClicked.addListener(function (resp) {
     if (resp.menuItemId === 'speech') {
         speakStopMenu();
 
-        console.log(resp.selectionText);
-        responsiveVoice.speak(resp.selectionText, 'UK English Female', {onend: voiceCallback});
+        var text = resp.selectionText;
+        text = text.replace('...', '');
+        text = text.replace('..', '');
+        text = text.replace(',,,', '');
+        text = text.replace(',,', '');
+        text = text.replace('...?', '?');
+        text = text.replace('..?', '?');
+        text = text.replace('.?', '?');
+
+        responsiveVoice.speak(text, 'UK English Female', {onend: voiceCallback});
     }
 
     if (resp.menuItemId === 'speech_stop') {
